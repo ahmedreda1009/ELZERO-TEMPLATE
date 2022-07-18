@@ -50,7 +50,6 @@ header {
 
 header .container {
     display: flex;
-    align-items: center;
 }
 
 .toggle-nav {
@@ -102,7 +101,6 @@ header .container {
 
 nav {
     width: 100%;
-    max-width: 250px;
     position: absolute;
     left: 0;
     top: 100%;
@@ -177,7 +175,7 @@ nav .secondary-list {
 }
 
 nav .secondary-list .nav-item {
-    border-bottom: 1px solid var(--secondary-color);
+    border-bottom: 1px solid rgba(242, 240, 240, 0.662);
     padding: 1em 3em;
 }
 
@@ -211,38 +209,66 @@ nav .image {
 @media (min-width: 600px) {
     header {
         padding: 0;
-    }
-
-    nav {
-        display: block;
+        position: relative;
     }
 
     .toggle-nav {
         display: none;
     }
 
+    nav {
+        position: static;
+        max-width: none;
+        transform: none;
+        transition: none;
+    }
+
     nav .primary-list {
         display: flex;
-        position: static;
+        justify-content: center;
     }
 
-    nav .primary-list > .nav-item .nav-link {
-        padding: 1em 0;
-        display: block;
+    nav .primary-list .nav-item {
+        padding: 1.125em 1.5em;
     }
 
-    nav  .mega-menu::after {
-        top: 33px;
+    nav .primary-list .mega-menu {
+        padding-right: 2em;
     }
 
-    nav .mega-menu.open + .nav-list.secondary-list {
-        top: 77px;
+    nav .nav-list.secondary-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+    }
+    .mega-menu.open + .secondary-list .secondary-nav-container {
         display: flex;
         justify-content: space-evenly;
     }
+}
 
-    nav .secondary-nav-container {
+/* header desktop 1000px *******************************************
+**************************************************************/
+@media (min-width: 1000px) {
+    nav .primary-list .mega-menu.open + .nav-list.secondary-list {
         display: flex;
-        gap: 80px;
+        align-items: center;
+        justify-content: center;
+        padding: 2em 0;
+        gap: 20px;
+    }
+
+    nav .second-group {
+        margin-left: 2em;
+    }
+
+    nav .image {
+        display: block;
+        max-width: 40%;
+    }
+
+    nav .image img {
+        width: 100%;
     }
 }

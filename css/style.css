@@ -163,6 +163,7 @@ nav  .mega-menu::after {
     border-width: 7px;
     border-style: solid;
     border-color: var(--main-color) transparent transparent transparent;
+    border-bottom: 1px solid rgba(242, 240, 240, 0.662);
 }
 
 nav .secondary-list {
@@ -175,7 +176,6 @@ nav .secondary-list {
 }
 
 nav .secondary-list .nav-item {
-    border-bottom: 1px solid rgba(242, 240, 240, 0.662);
     padding: 1em 3em;
 }
 
@@ -209,6 +209,9 @@ nav .image {
 @media (min-width: 600px) {
     header {
         padding: 0;
+    }
+
+    header .container {
         position: relative;
     }
 

@@ -324,6 +324,7 @@ main .text {
 main .text h1 {
     font-family: 'Koulen', sans-serif;
     font-size: 2.5em;
+    color: var(--dark-color);
 }
 
 main .text p {
@@ -350,12 +351,12 @@ main .arrow {
 **************************************************************/
 @media (min-width: 600px) {
     main .text h1 {
-        font-size: 3.1em;
+        font-size: 52px;
     }
 
     main .text p {
         font-size: 22px;
-        max-width: 450px;
+        max-width: 476px;
     }
 }
 
@@ -373,19 +374,21 @@ main .arrow {
     }
 
     main .text h1 {
-        font-size: 5em;
+        font-size: 84px;
         margin-bottom: 0;
     }
 
-    main .image {
-        display: block;
-        max-width: 600px;
+    main .text p {
+        max-width: 380px;
     }
 
     main .image {
-        width: 80%;
-        position: relative;
-        z-index: 10;
+        display: flex;
+        align-items: center;
+        max-width: 600px;
+    }
+
+    main .image img {
         animation: image-moving 3000ms infinite alternate ease-in-out;
     }
 

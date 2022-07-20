@@ -53,15 +53,15 @@ a {
     border: 2px solid black;
     padding: .7em 1.3em;
     position: relative;
+    transition: background-color .5s 300ms,
+                color .5s .5s,
+                border-color .5s .5s;
 }
 
 .section-header:hover {
     background-color: var(--main-color);
     color: white;
     border-color: transparent;
-    transition: background-color .5s .5s,
-                color .5s .5s,
-                border-color .5s .5s;
 }
 
 .section-header::before,
@@ -508,11 +508,6 @@ main .arrow {
     padding-top: var(--main-padding);
     padding-bottom: var(--main-padding);
 }
-.articles .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 25px;
-}
 
 .articles .card {
     border-radius: 10px;
@@ -563,4 +558,12 @@ main .arrow {
 
 .articles .card:hover .button i {
     transform: translateX(3px);
+}
+
+/* articles desktop  *******************************************
+**************************************************************/
+.articles .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
 }

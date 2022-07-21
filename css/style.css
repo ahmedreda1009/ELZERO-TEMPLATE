@@ -11,7 +11,8 @@
     --secondary-color: #fafafa;
     --text-color: #606060;
     --dark-color: #424242;
-    --main-padding: 4em;
+    --main-margin: 40px;
+    --main-padding: 40px;
 }
 
 html {
@@ -27,6 +28,13 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.main-section-pad-marg {
+    margin-top: var(--main-margin);
+    margin-bottom: var(--main-margin);
+    padding-top: var(--main-padding);
+    padding-bottom: var(--main-padding);
 }
 
 img {
@@ -53,15 +61,15 @@ a {
     border: 2px solid black;
     padding: .7em 1.3em;
     position: relative;
-    transition: background-color .5s 300ms,
-                color .5s .5s,
-                border-color .5s .5s;
+    z-index: 100;
+    transition: border-color .5s .5s;
+    margin-top: 30px;
 }
 
 .section-header:hover {
-    background-color: var(--main-color);
     color: white;
     border-color: transparent;
+    transition: color .5s .5s;
 }
 
 .section-header::before,
@@ -92,17 +100,18 @@ a {
 
 .section-header:hover::before,
 .section-header:hover::after {
-    width: 51%;
     height: 100%;
     border-radius: 0;
 } 
 
 .section-header:hover::before {
     left: 0;
+    width: 50%;
 }
 
 .section-header:hover::after {
     right: 0;
+    width: calc(50% + 1px);
 }
 
 .section-header h2 {
@@ -334,6 +343,7 @@ nav .image {
         left: 0;
         width: 100%;
     }
+
     .mega-menu.open + .secondary-list .secondary-nav-container {
         display: flex;
         justify-content: space-evenly;
@@ -429,11 +439,11 @@ main .arrow {
         display: block;
         background-color: var(--secondary-color);
         position: absolute;
-        top: -150px;
-        left: -189px;
+        top: -100vh;
+        left: -550px;
         z-index: -1;
         width: 200%;
-        height: 100%;
+        height: 200%;
         transform: rotate(-5deg);
     }
 
@@ -502,13 +512,15 @@ main .arrow {
         }
     }
 }
-
-/* articles mobile  *******************************************/
-.articles {
-    padding-top: var(--main-padding);
-    padding-bottom: var(--main-padding);
+/* landing desktop 1500px *******************************************
+**************************************************************/
+@media (min-width: 1500px) {
+    main .background {
+        top: -115vh;
+    }
 }
 
+/* articles mobile  *******************************************/
 .articles .card {
     border-radius: 10px;
     overflow: hidden;
@@ -565,5 +577,55 @@ main .arrow {
 .articles .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+/* gallery mobile  *******************************************/
+.gallery {
+    background-color: var(--secondary-color);
+}
+
+.gallery .card {
+    border: 15px solid white;
+    box-shadow: 2px 2px 5px 2px rgba(230, 230, 230, 0.382);
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery .card::after {
+    content: '';
+    width: 0px;
+    height: 0px;
+    background-color: rgba(255, 255, 255, 0.059);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    transition: .2s;
+}
+
+.gallery .card:hover::after {
+    width: 100%;
+    height: 100%;
+}
+
+.gallery .card .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform .5s;
+}
+
+.gallery .card:hover .image {
+    transform: rotate(3deg) scale(1.1);
+}
+
+/* gallery desktop  *******************************************
+**************************************************************/
+.gallery .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
 }

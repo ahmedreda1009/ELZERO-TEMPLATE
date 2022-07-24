@@ -37,6 +37,12 @@ body {
     padding-bottom: var(--main-padding);
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
 img {
     max-width: 100%;
 }
@@ -525,11 +531,12 @@ main .arrow {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 2px 2px 5px 2px rgba(230, 230, 230, 0.382);
-    transition: transform .3s;
+    transition: transform .3s, box-shadow .5s;
 }
 
 .articles .card:hover {
     transform: translateY(-4px);
+    box-shadow: 2px 2px 5px 3px rgba(227, 227, 227, 0.587);
 }
 
 .articles .card .text > * {
@@ -572,14 +579,6 @@ main .arrow {
     transform: translateX(3px);
 }
 
-/* articles desktop  *******************************************
-**************************************************************/
-.articles .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 25px;
-}
-
 /* gallery mobile  *******************************************/
 .gallery {
     background-color: var(--secondary-color);
@@ -590,6 +589,11 @@ main .arrow {
     box-shadow: 2px 2px 5px 2px rgba(230, 230, 230, 0.382);
     position: relative;
     overflow: hidden;
+    transition: box-shadow .5s;
+}
+
+.gallery .card:hover {
+    box-shadow: 2px 2px 5px 2px rgba(227, 227, 227, 0.587);
 }
 
 .gallery .card::after {
@@ -622,10 +626,148 @@ main .arrow {
     transform: rotate(3deg) scale(1.1);
 }
 
-/* gallery desktop  *******************************************
-**************************************************************/
-.gallery .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+/* features mobile  *******************************************/
+.features .container {
+    gap: 30px;
+}
+
+.features .card {
+    border: 1px solid rgb(201, 201, 201);
+    text-align: center;
+}
+
+.features .card .image {
+    position: relative;
+    overflow: hidden;
+}
+
+.features .card .layer {
+    width: 100%;
+    height: calc(100% - 3px);
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.features .card .triangle {
+    position: absolute;
+    bottom: -60%;
+    left: -50%;
+    width: 200%;
+    height: 80%;
+    background-color: #fff;
+    z-index: 200;
+    transform: rotate(-25deg);
+    transition: all .3s ease-in-out;
+}
+
+.features .card:hover .triangle {
+    transform: rotate(25deg);
+}
+
+.features .card:first-child .layer {
+    background-color: #f44036;
+}
+
+.features .card:nth-child(2) .layer {
+    background-color: #009688;
+}
+
+.features .card:nth-child(3) .layer {
+    background-color: #03a9f4;
+}
+
+.features .card .text {
+    padding: 30px 0;
+}
+
+.features .card .text h3 {
+    margin: 0 auto;
+    padding: 0 5px 15px;
+    max-width: fit-content;
+    font-size: 38px;
+    text-transform: capitalize;
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+}
+
+.features .card:first-child .text h3 {
+    border-color: #f44036;
+}
+
+.features .card:nth-child(2) .text h3 {
+    border-color: #009688;
+}
+
+.features .card:nth-child(3) .text h3 {
+    border-color: #03a9f4;
+}
+
+.features .card .text p {
+    padding: 2em 1em;
+    font-size: 20px;
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+.features .card .text .btn {
+    text-transform: uppercase;
+    padding: .6em 1.4em;
+    border-radius: 10px;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 20px;
+    border-width: 3px;
+    border-style: solid;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.features .card:first-child .text .btn {
+    border-color: #f44036;
+    color: #f44036;
+}
+
+.features .card:nth-child(2) .text .btn {
+    border-color: #009688;
+    color: #009688;
+}
+
+.features .card:nth-child(3) .text .btn {
+    border-color: #03a9f4;
+    color: #03a9f4;
+}
+
+.features .card .text .btn::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: -100;
+    transition: all .5s ease-in-out;
+}
+
+.features .card:first-child .text .btn::before {
+    background-color: #f44036;
+}
+
+.features .card:nth-child(2) .text .btn::before {
+    background-color: #009688;
+}
+
+.features .card:nth-child(3) .text .btn::before {
+    background-color: #03a9f4;
+}
+
+.features .card:hover .text .btn::before {
+    left: 0;
+}
+
+.features .card:hover .text .btn{
+    color: white;
 }

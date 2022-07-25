@@ -341,6 +341,11 @@ nav .image {
 
     nav .primary-list > .nav-item .nav-link {
         color: initial;
+        transition: color .3s;
+    }
+
+    nav .primary-list > .nav-item:hover .nav-link {
+        color: var(--main-color);
     }
 
     nav .primary-list .mega-menu {

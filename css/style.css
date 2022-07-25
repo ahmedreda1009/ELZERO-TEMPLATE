@@ -263,7 +263,15 @@ nav .secondary-list {
     border-bottom: 3px solid var(--main-color);
 }
 
+/* open mega menu with click  */
 .mega-menu.open + .secondary-list {
+    display: block;
+    background-color: var(--dark-color);
+}
+
+/* open mega menu with hover  */
+.mega-menu:hover + .secondary-list,
+.mega-menu + .secondary-list:hover {
     display: block;
     background-color: var(--dark-color);
 }
@@ -282,7 +290,7 @@ nav  .secondary-list .nav-item::after {
     width: 100%;
     height: 100%;
     background-color: var(--secondary-color);
-    transition: transform 350ms ease-in-out;
+    /* transition: transform 600ms ease-in-out; */
     position: absolute;
     top: 0;
     left: -100%;
@@ -349,8 +357,17 @@ nav .image {
         left: 0;
         width: 100%;
     }
-
+    
+    /* open mega menu with click  */
     .mega-menu.open + .secondary-list .secondary-nav-container {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 2em 0;
+    }
+    
+    /* open mega menu with hover  */
+    .mega-menu:hover + .secondary-list .secondary-nav-container,
+    .mega-menu + .secondary-list:hover .secondary-nav-container {
         display: flex;
         justify-content: space-evenly;
         padding: 2em 0;
@@ -360,7 +377,16 @@ nav .image {
 /* header desktop 1000px *******************************************
 **************************************************************/
 @media (min-width: 1000px) {
+    /* open mega menu with click  */
     nav .mega-menu.open + .secondary-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    /* open mega menu with hover  */
+    nav .mega-menu:hover + .secondary-list,
+    nav .mega-menu + .secondary-list:hover {
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -715,7 +741,7 @@ main .arrow {
 .features .card .text .btn {
     text-transform: uppercase;
     padding: .6em 1.4em;
-    border-radius: 10px;
+    border-radius: 9px;
     background-color: transparent;
     font-weight: bold;
     font-size: 20px;

@@ -10,14 +10,14 @@ toggleNav.addEventListener('click', () => {
     }
 });
 
-const secondaryNav = document.querySelector('.mega-menu');
-let secondaryOpen = false;
-secondaryNav.addEventListener('click',() => {
-    if(!secondaryOpen) {
-        secondaryNav.classList.add('open');
-        secondaryOpen = true;
-    } else {
-        secondaryNav.classList.remove('open');
-        secondaryOpen = false;
-    }
-});
+// const secondaryNav = document.querySelector('.mega-menu');
+// let secondaryOpen = false;
+// secondaryNav.addEventListener('click',() => {
+//     if(!secondaryOpen) {
+//         secondaryNav.classList.add('open');
+//         secondaryOpen = true;
+//     } else {
+//         secondaryNav.classList.remove('open');
+//         secondaryOpen = false;
+//     }
+// });

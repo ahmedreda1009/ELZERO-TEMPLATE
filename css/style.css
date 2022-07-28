@@ -74,8 +74,10 @@ a {
 
 .section-header:hover {
     color: white;
-    border-color: transparent;
-    transition: color .5s .5s;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #fff;
+    transition: color .5s .5s, border-color .5s .2s;
 }
 
 .section-header::before,
@@ -210,11 +212,6 @@ nav  .nav-item {
     overflow: hidden;
 }
 
-nav .nav-item:hover,
-nav .nav-item:focus {
-    opacity: .8;
-}
-
 nav  .primary-list > .nav-item:hover {
     background-color: #606060;
 }
@@ -278,6 +275,11 @@ nav .secondary-list {
 
 nav .secondary-list .nav-item {
     padding: 1em 3.5em;
+    transition: background-color .2s;
+}
+
+nav .secondary-list .nav-item:hover {
+    background-color: var(--text-color);
 }
 
 nav .secondary-list i,

@@ -16,6 +16,17 @@ let ratingStar = document.querySelectorAll(".testimonials .rating i");
 
 let filledStars = [];
 
+if (window.localStorage.getItem("stars")) {
+    filledStars = window.localStorage.getItem("stars").split(",");
+    ratingStar.forEach(element => {
+        filledStars.forEach(ele => {
+            if (element.dataset.id == ele) {
+                element.classList.add("filled", "fas");
+            }
+        });
+    });
+}
+
 // looping over each card rating stars
 rating.forEach(element => {
     // looping over each element in one card
@@ -27,11 +38,13 @@ rating.forEach(element => {
                 // color the element
                 element.classList.add("filled", "fas");
                 filledStars.push(element.dataset.id);
+                window.localStorage.setItem("stars", filledStars);
                 // color the previous elements
                 let prevSiblings  = getPreviousSiblings(element);
                 prevSiblings.forEach(element => {
                     element.classList.add("filled", "fas");
                     filledStars.push(element.dataset.id);
+                    window.localStorage.setItem("stars", filledStars);
                 });
                 // make sure that the next elements is not colored
                 let nextSiblings = getNextSiblings(element);
@@ -43,19 +56,28 @@ rating.forEach(element => {
                 let nextSiblings = getNextSiblings(element);
                 nextSiblings.forEach(element => {
                     element.classList.remove("filled", "fas");
+                    filledStars = filledStars.filter(ele => ele != element.dataset.id);
+                    window.localStorage.setItem("stars", filledStars);
+                    // console.log(element.dataset.id);
                 });
             } else {
                 // color the element
                 element.classList.remove("filled", "fas");
+                filledStars = filledStars.filter(ele => ele != element.dataset.id);
+                window.localStorage.setItem("stars", filledStars);
                 // color the previous elements
                 let prevSiblings  = getPreviousSiblings(element);
                 prevSiblings.forEach(element => {
                     element.classList.remove("filled", "fas");
+                    filledStars = filledStars.filter(ele => ele != element.dataset.id);
+                    window.localStorage.setItem("stars", filledStars);
                 });
                 // make sure that the next elements is not colored
                 let nextSiblings = getNextSiblings(element);
                 nextSiblings.forEach(element => {
                     element.classList.remove("filled", "fas");
+                    filledStars = filledStars.filter(ele => ele != element.dataset.id);
+                    window.localStorage.setItem("stars", filledStars);
                 });
             }
         }

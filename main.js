@@ -1,3 +1,4 @@
+// nav bar mobile toggle ////////////////////////////////////////////////////////////////////////////////
 const toggleNav = document.querySelector('.toggle-nav');
 let navOpen = false;
 toggleNav.addEventListener('click', () => {
@@ -10,14 +11,14 @@ toggleNav.addEventListener('click', () => {
     }
 });
 
-// rating stars
+// rating stars ////////////////////////////////////////////////////////////////////////////////////////
 let rating = document.querySelectorAll(".testimonials .rating");
 let ratingStar = document.querySelectorAll(".testimonials .rating i");
 
 let filledStars = [];
 
 if (window.localStorage.getItem("stars")) {
-    filledStars = window.localStorage.getItem("stars").split(",");
+    filledStars = window.localStorage.getItem("stars").split(",").sort();
     ratingStar.forEach(element => {
         filledStars.forEach(ele => {
             if (element.dataset.id == ele) {
@@ -40,7 +41,7 @@ rating.forEach(element => {
                 if (!filledStars.includes(element.dataset.id)) {
                     filledStars.push(element.dataset.id);
                 }
-                window.localStorage.setItem("stars", filledStars);
+                addStarsToLocalStorageFrom(filledStars);
                 // color the previous elements
                 let prevSiblings  = getPreviousSiblings(element);
                 prevSiblings.forEach(element => {
@@ -48,7 +49,7 @@ rating.forEach(element => {
                     if (!filledStars.includes(element.dataset.id)) {
                         filledStars.push(element.dataset.id);
                     }
-                    window.localStorage.setItem("stars", filledStars);
+                    addStarsToLocalStorageFrom(filledStars);
                 });
                 // make sure that the next elements is not colored
                 // let nextSiblings = getNextSiblings(element);
@@ -60,28 +61,31 @@ rating.forEach(element => {
                 let nextSiblings = getNextSiblings(element);
                 nextSiblings.forEach(element => {
                     element.classList.remove("filled", "fas");
-                    filledStars = filledStars.filter(ele => ele != element.dataset.id);
-                    window.localStorage.setItem("stars", filledStars);
+                    filledStars = removeStarFrom(filledStars, element.dataset.id);
+                    // filledStars = filledStars.filter(ele => ele != element.dataset.id);
+                    addStarsToLocalStorageFrom(filledStars);
                     // console.log(element.dataset.id);
                 });
             } else {
                 // color the element
                 element.classList.remove("filled", "fas");
                 filledStars = filledStars.filter(ele => ele != element.dataset.id);
-                window.localStorage.setItem("stars", filledStars);
+                addStarsToLocalStorageFrom(filledStars);
                 // color the previous elements
                 let prevSiblings  = getPreviousSiblings(element);
                 prevSiblings.forEach(element => {
                     element.classList.remove("filled", "fas");
-                    filledStars = filledStars.filter(ele => ele != element.dataset.id);
-                    window.localStorage.setItem("stars", filledStars);
+                    filledStars = removeStarFrom(filledStars, element.dataset.id);
+                    // filledStars = filledStars.filter(ele => ele != element.dataset.id);
+                    addStarsToLocalStorageFrom(filledStars);
                 });
                 // make sure that the next elements is not colored
                 let nextSiblings = getNextSiblings(element);
                 nextSiblings.forEach(element => {
                     element.classList.remove("filled", "fas");
-                    filledStars = filledStars.filter(ele => ele != element.dataset.id);
-                    window.localStorage.setItem("stars", filledStars);
+                    filledStars = removeStarFrom(filledStars, element.dataset.id);
+                    // filledStars = filledStars.filter(ele => ele != element.dataset.id);
+                    addStarsToLocalStorageFrom(filledStars);
                 });
             }
         }
@@ -103,3 +107,22 @@ function getNextSiblings(element) {
     }
     return siblings ;
 }
+
+function removeStarFrom(arrayName, starId) {
+    arrayName = arrayName.filter(ele => ele != starId);
+    return arrayName;
+}
+
+function addStarsToLocalStorageFrom(arrayName) {
+    window.localStorage.setItem("stars", arrayName);
+}
+
+// scroll with the arrow in the main
+let arrowMain = document.querySelector("main .arrow i");
+
+arrowMain.addEventListener("click", () => {
+    window.scrollTo({
+        top: 650,
+        behavior: "smooth"
+    });
+});

@@ -37,21 +37,25 @@ rating.forEach(element => {
             if (!element.classList.contains("filled")) {
                 // color the element
                 element.classList.add("filled", "fas");
-                filledStars.push(element.dataset.id);
+                if (!filledStars.includes(element.dataset.id)) {
+                    filledStars.push(element.dataset.id);
+                }
                 window.localStorage.setItem("stars", filledStars);
                 // color the previous elements
                 let prevSiblings  = getPreviousSiblings(element);
                 prevSiblings.forEach(element => {
                     element.classList.add("filled", "fas");
-                    filledStars.push(element.dataset.id);
+                    if (!filledStars.includes(element.dataset.id)) {
+                        filledStars.push(element.dataset.id);
+                    }
                     window.localStorage.setItem("stars", filledStars);
                 });
                 // make sure that the next elements is not colored
-                let nextSiblings = getNextSiblings(element);
-                nextSiblings.forEach(element => {
-                    element.classList.remove("filled", "fas");
-                    // console.log(element.dataset.id);
-                });
+                // let nextSiblings = getNextSiblings(element);
+                // nextSiblings.forEach(element => {
+                //     element.classList.remove("filled", "fas");
+                //     // console.log(element.dataset.id);
+                // });
             } else if (element.classList.contains("filled") && element.nextElementSibling.classList.contains("filled")) {
                 let nextSiblings = getNextSiblings(element);
                 nextSiblings.forEach(element => {

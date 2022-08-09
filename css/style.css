@@ -68,7 +68,8 @@ a {
     padding: .7em 1.3em;
     position: relative;
     z-index: 100;
-    transition: border-color .5s .5s;
+    transition: border-color .5s .5s,
+                box-shadow .3s;
     margin-top: 30px;
 }
 
@@ -77,8 +78,8 @@ a {
     border-width: 2px;
     border-style: solid;
     border-color: #fff;
+    box-shadow: 0px 1px 10px 3px rgba(138, 138, 138, 0.086);
     transition: color .5s .5s, border-color .5s .2s;
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.239);
 }
 
 .section-header::before,
@@ -837,7 +838,7 @@ main .arrow {
     color: rgb(138, 138, 138);
     text-transform: uppercase;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
 }
 
 .testimonials .rating .filled {
@@ -846,4 +847,12 @@ main .arrow {
 
 .testimonials p {
     color: rgb(138, 138, 138);
+}
+
+.testimonials .rating i {
+    font-size: 18px;
+}
+
+.testimonials .rating i:last-child {
+    visibility: hidden;
 }

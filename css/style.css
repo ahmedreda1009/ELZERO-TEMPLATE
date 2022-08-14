@@ -649,7 +649,7 @@ main .arrow {
     content: '';
     width: 0px;
     height: 0px;
-    background-color: rgba(255, 255, 255, 0.059);
+    background-color: rgba(255, 255, 255, 0.236);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -659,8 +659,23 @@ main .arrow {
 }
 
 .gallery .card:hover::after {
-    width: 100%;
-    height: 100%;
+    animation: article-glowing .6s ease-in-out;
+}
+
+@keyframes article-glowing {
+    0% {
+        width: 0px;
+        height: 0px;
+    }
+    50% {
+        width: 100%;
+        height: 100%;  
+    }
+    100% {
+        width: 100%;
+        height: 100%; 
+        background-color: transparent;
+    }
 }
 
 .gallery .card .image {
@@ -876,4 +891,102 @@ main .arrow {
         right: -3px;
         border: 5px solid var(--secondary-color);
     }
+}
+
+/* team members ********************************************************************/
+.team-members .card {
+    position: relative;
+    padding: 20px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.team-members .card::before,
+.team-members .card::after {
+    content: '';
+    width: calc(100% - 75px);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.team-members .card::before {
+    background-color: var(--secondary-color);
+    padding-left: 30px;
+}
+
+.team-members .card::after {
+    background-color: #e5e4e4;
+    width: 0;
+    transition: width .3s ease-in-out;
+}
+
+.team-members .card:hover::after {
+    width: calc(100% - 75px);
+}
+
+.team-members .card .back .text h3 {
+    margin: 0;
+}
+
+.team-members .card .front {
+    display: flex;
+    flex-direction: column;
+}
+
+.team-members .card .front .images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 40px;
+}
+
+.team-members .card .front .images .image {
+    text-align: center;
+}
+
+.team-members .card .front .images .image img {
+    border-radius: 10px;
+    transition: filter .3s ease-in-out;
+}
+
+.team-members .card:hover .front .images .image img {
+    filter: grayscale(1);
+}
+
+.team-members .card .front .images .social-media {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.team-members .card .front .images .social-media i {
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+.team-members .card .front .images .social-media i:hover {
+    color: var(--main-color);
+}
+
+.team-members .front .text {
+    padding-left: 80px;
+}
+
+.team-members .front .text h3 {
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 0;
+    margin-top: 15px;
+}
+
+.team-members .front .text p {
+    color: var(--text-color);
+    margin-bottom: 0;
 }

@@ -132,7 +132,7 @@ arrowMain.addEventListener("click", () => {
 
 // scroll to top button //////////////////////////////////////////////////////////////////
 let scrollBtn = document.createElement("div");
-scrollBtn.classList.add("fa-solid", "fa-arrow-up-long");
+scrollBtn.classList.add("fa-solid", "fa-arrow-up-long", "scroll-to-top");
 scrollBtn.style.cssText =
   "border: 2px solid #FFF; display: none; box-shadow: rgb(138 138 138 / 25%) 0px 5px 10px 3px; z-index: 10000; font-size: 20px; border-radius: 10px; padding: 15px 20px; position: fixed; right: 25px; bottom: 25px; background-color: #2196f3; color: #FFF;";
 document.body.prepend(scrollBtn);

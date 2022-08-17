@@ -166,7 +166,7 @@ window.onscroll = () => {
             if (element.textContent === element.dataset.prog) {
               clearInterval(intId);
             }
-          }, 250);
+          }, 18);
         });
         started = true;
       }

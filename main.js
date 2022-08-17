@@ -138,10 +138,39 @@ scrollBtn.style.cssText =
 document.body.prepend(scrollBtn);
 
 window.onscroll = () => {
+  // scroll to top button ////////////////////////////////
   if (window.scrollY >= 500) {
     scrollBtn.style.display = "block";
   } else {
     scrollBtn.style.display = "none";
+  }
+
+
+
+  // show progress width on scroll //////////////////////////////
+  let progSec = document.getElementById("our-skills");
+  let progBar = document.querySelectorAll(".prog-bar");
+  let progNum = document.querySelectorAll(".progression .progress-num");
+
+  let started = false;
+
+  window.onscroll = function () {
+    if (window.scrollY >= progSec.offsetTop - 50) {
+      progBar.forEach((ele, index) => {
+        ele.style.width = `${progNum[index].dataset.prog}%`;
+      });
+      if (!started) {
+        progNum.forEach((element) => {
+          let intId = setInterval(() => {
+            element.textContent++;
+            if (element.textContent === element.dataset.prog) {
+              clearInterval(intId);
+            }
+          }, 18);
+        });
+        started = true;
+      }
+    }
   }
 };
 
@@ -151,3 +180,8 @@ scrollBtn.onclick = () => {
     behavior: "smooth",
   });
 };
+
+
+
+
+

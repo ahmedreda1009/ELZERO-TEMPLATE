@@ -1015,7 +1015,7 @@ main .arrow {
 }
 
 .services .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(3px);
 }
 
 .services .card::before {
@@ -1092,4 +1092,95 @@ main .arrow {
 .services .card .details a {
     color: var(--main-color);
     font-size: 18px;
+}
+
+/* our skills mobile ********************************************************************/
+.our-skills .container {
+    max-width: 80%;
+}
+
+.our-skills .container .image {
+    display: none;
+}
+
+.our-skills .progress-unit {
+    margin-bottom: 15px;
+}
+
+.our-skills .progress-unit .details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.our-skills .progress-unit .details h3 {
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.our-skills .progress-unit .details .progress-num {
+    font-size: 18px;
+    border: 2px solid var(--secondary-color);
+    padding: 1px 3px;
+    border-radius: 10px;
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.our-skills .progress-unit .details .progress-num::after {
+    content: "%";
+}
+
+.our-skills .progress-unit .progress-bar {
+    position: relative;
+    height: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.our-skills .progress-unit .progress-bar > * {
+    height: 100%;
+}
+
+.our-skills .progress-unit .progress-bar .base-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--secondary-color);
+    width: 100%;
+}
+
+.our-skills .progress-unit .progress-bar .prog-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--main-color);
+    width: 0;
+    transition: all 1.5s ease-in-out;
+}
+/* our skills desktop 1000px ********************************************************************/
+@media (min-width: 1000px) {
+    .our-skills .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .our-skills .progression {
+        flex-basis: 55%;
+        max-width: 60%;
+    }
+
+    .our-skills .container .image {
+        display: block;
+        flex-basis: 40%;
+    }
+}
+
+/* our skills desktop 1200px ********************************************************************/
+@media (min-width: 1200px) {
+    .our-skills .container {
+        max-width: 1100px;
+    }
 }

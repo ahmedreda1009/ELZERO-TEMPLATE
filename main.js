@@ -151,22 +151,22 @@ window.onscroll = () => {
   let progSec = document.getElementById("our-skills");
   let progBar = document.querySelectorAll(".prog-bar");
   let progNum = document.querySelectorAll(".progression .progress-num");
-
   let started = false;
 
   window.onscroll = function () {
     if (window.scrollY >= progSec.offsetTop - 50) {
-      progBar.forEach((ele, index) => {
-        ele.style.width = `${progNum[index].dataset.prog}%`;
-      });
       if (!started) {
         progNum.forEach((element) => {
           let intId = setInterval(() => {
             element.textContent++;
+            progBar.forEach((ele, index) => {
+              // ele.style.width = `${progNum[index].dataset.prog}%`;
+              ele.style.width = `${progNum[index].textContent}%`;
+            });
             if (element.textContent === element.dataset.prog) {
               clearInterval(intId);
             }
-          }, 18);
+          }, 250);
         });
         started = true;
       }

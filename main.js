@@ -133,55 +133,49 @@ arrowMain.addEventListener("click", () => {
 // scroll to top button //////////////////////////////////////////////////////////////////
 let scrollBtn = document.createElement("div");
 scrollBtn.classList.add("fa-solid", "fa-arrow-up-long", "scroll-to-top");
-scrollBtn.style.cssText =
-  "border: 2px solid #FFF; display: none; box-shadow: rgb(138 138 138 / 25%) 0px 5px 10px 3px; z-index: 10000; font-size: 20px; border-radius: 10px; padding: 15px 20px; position: fixed; right: 25px; bottom: 25px; background-color: #2196f3; color: #FFF;";
+scrollBtn.style.cssText = "border: 2px solid #FFF; display: none; box-shadow: rgb(138 138 138 / 25%) 0px 5px 10px 3px; z-index: 10000; font-size: 20px; border-radius: 10px; padding: 15px 20px; position: fixed; right: 25px; bottom: 25px; background-color: #2196f3; color: #FFF;";
 document.body.prepend(scrollBtn);
 
-window.onscroll = () => {
-  // scroll to top button ////////////////////////////////
-  if (window.scrollY >= 500) {
-    scrollBtn.style.display = "block";
-  } else {
-    scrollBtn.style.display = "none";
-  }
+// scroll to top button (on scroll)////////////////////////////////
+window.addEventListener("scroll", () => {
+	if (window.scrollY >= 500) {
+		scrollBtn.style.display = "block";
+	} else {
+		scrollBtn.style.display = "none";
+	}
+})
 
-
-
-  // show progress width on scroll //////////////////////////////
-  let progSec = document.getElementById("our-skills");
-  let progBar = document.querySelectorAll(".prog-bar");
-  let progNum = document.querySelectorAll(".progression .progress-num");
-  let started = false;
-
-  window.onscroll = function () {
-    if (window.scrollY >= progSec.offsetTop - 50) {
-      if (!started) {
-        progNum.forEach((element) => {
-          let intId = setInterval(() => {
-            element.textContent++;
-            progBar.forEach((ele, index) => {
-              // ele.style.width = `${progNum[index].dataset.prog}%`;
-              ele.style.width = `${progNum[index].textContent}%`;
-            });
-            if (element.textContent === element.dataset.prog) {
-              clearInterval(intId);
-            }
-          }, 18);
-        });
-        started = true;
-      }
-    }
-  }
-};
-
-scrollBtn.onclick = () => {
+// scroll to top button (on click)////////////////////////////////
+scrollBtn.addEventListener("click", () => {
   window.scrollTo({
+    left: 0,
     top: 0,
-    behavior: "smooth",
+    behavior: "smooth"
   });
-};
+})
 
 
+// show progress width on scroll //////////////////////////////
+let progSec = document.getElementById("our-skills");
+let progBar = document.querySelectorAll(".prog-bar");
+let progNum = document.querySelectorAll(".progression .progress-num");
 
+let started = false;
 
-
+window.addEventListener("scroll", () => {
+	if (window.scrollY >= progSec.offsetTop - 50) {
+	if (!started) {
+		progNum.forEach((element) => {
+		let intId = setInterval(() => {
+			element.textContent++;
+			progBar.forEach((ele, index) => {
+			ele.style.width = `${progNum[index].textContent}%`;
+			});
+			if (element.textContent === element.dataset.prog) {
+			clearInterval(intId);
+			}
+		}, 18);
+		});
+	}
+	started = true;
+}})

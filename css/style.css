@@ -130,6 +130,12 @@ a {
     text-transform: uppercase;
 }
 
+@media (max-width:320px) {
+    .section-header h2 {
+        font-size: 25px;
+    }
+}
+
 .scroll-to-top:hover {
     opacity: .7;
     cursor: pointer;

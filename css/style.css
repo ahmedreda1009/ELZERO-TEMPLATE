@@ -134,11 +134,35 @@ a {
     .section-header h2 {
         font-size: 25px;
     }
+
+    .scroll-to-top {
+        display: none !important;
+    }
+}
+
+.scroll-to-top {
+    border: 2px solid #FFF; 
+    display: none; 
+    box-shadow: rgb(138 138 138 / 25%) 0px 5px 10px 3px; 
+    z-index: 10000; 
+    font-size: 20px; 
+    border-radius: 10px; 
+    padding: 15px 20px; 
+    position: fixed; 
+    right: 25px; 
+    bottom: 25px; 
+    background-color: #2196f3; 
+    color: #FFF;
+    transition: background-color .3s ease-out,
+                bottom .1s ease-in-out,
+                box-shadow .3s ease-out;
 }
 
 .scroll-to-top:hover {
-    opacity: .7;
+    background-color: rgb(0 119 213);
     cursor: pointer;
+    bottom: 30px;
+    box-shadow: rgb(138 138 138 / 30%) 0px 5px 10px 3px; 
 }
 
 /* header mobile  *******************************************/
@@ -1164,7 +1188,7 @@ main .arrow {
     background-color: var(--main-color);
     width: 0;
     border-radius: 3px;
-    /* transition: all 1.5s ease-in-out; */
+    transition: width .2s ease-out;
 }
 /* our skills desktop 1000px ********************************************************************/
 @media (min-width: 1000px) {
@@ -1220,6 +1244,7 @@ main .arrow {
     max-width: 700px;
     margin: 0 auto 30px;
     position: relative;
+    isolation: isolate;
 }
 
 .how-it-works .container .content .work-content::before {
@@ -1232,7 +1257,7 @@ main .arrow {
     transform: translate(-50%, -50%);
     background-color: rgb(234, 234, 234);
     border-radius: 10px;
-    z-index: 1;
+    z-index: -1;
     transition: all .3s ease-in-out;
 }
 
@@ -1243,14 +1268,14 @@ main .arrow {
 
 .how-it-works .container .content .work-content .image {
     max-width: 70px;
-    position: relative;
-    z-index: 10;
+    /* position: relative;
+    z-index: 10; */
 }
 
 .how-it-works .container .content .work-content .text {
     text-align: center;
-    position: relative;
-    z-index: 10;
+    /* position: relative;
+    z-index: 10; */
 }
 
 .how-it-works .container .content .work-content .text h3 {
@@ -1294,5 +1319,226 @@ main .arrow {
 
     .how-it-works .container .content .work-content .text {
         text-align: left;
+    }
+}
+
+/* latest events mobile ********************************************************************/
+.latest-events {
+    position: relative;
+    overflow: hidden;
+}
+
+.latest-events .main-content .image {
+    display: none;
+}
+
+.latest-events .main-content .sub-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.latest-events .main-content .sub-content .counter {
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+}
+
+.latest-events .main-content .sub-content .counter > * {
+    border: 2px solid #d7d7d7;
+    border-radius: 10px;
+    transition: border .3s ease-in-out;
+}
+
+.latest-events .main-content .sub-content .counter > *:hover,
+.latest-events .main-content .sub-content .counter > *:hover .number {
+    border-color: var(--main-color);
+}
+
+.latest-events .main-content .sub-content .counter > * > * {
+    padding: 10px;
+}
+
+.latest-events .main-content .sub-content .counter .number {
+    border-bottom: 2px solid #d7d7d7;
+    padding-bottom: 20px;
+    transition: border .3s ease-in-out;
+    font-weight: bold;
+    font-size: 25px;
+    color: var(--main-color);
+}
+
+.latest-events .main-content .sub-content .counter .type {
+    color: #424242;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.latest-events .main-content .sub-content h3 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.latest-events .main-content .sub-content p {
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--text-color);
+    max-width: 600px;
+    margin: auto;
+}
+.latest-events .subscribe {
+    margin: auto;
+    max-width: 80%;
+    margin: 20px auto 0;
+    max-width: 500px;
+    background-color: #EEE;
+    padding: 20px 20px 95px;
+    border-radius: 0px;
+    transition: padding .4s ease-in-out,
+                border-radius .4s ease-in-out;
+}
+
+.latest-events .subscribe form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.latest-events .subscribe input {
+    border: 1px solid #d7d7d7;
+    outline: none;
+    padding: 20px;
+    background-color: #fff;
+    transition: border-radius .5s ease-in-out;
+    caret-color: var(--main-color);
+    /* border-image: linear-gradient(to right, #d7d7d7 0px,
+                                            #d7d7d7 20px, 
+                                            transparent 20px, 
+                                            transparent 120px,
+                                            #d7d7d7 120px,
+                                            #d7d7d7 100%); */
+    border-image-slice: 1;
+}
+
+.latest-events .subscribe label {
+    position: absolute;
+    padding: 0px 15px;
+    transition: top .4s ease-in-out,
+                left .4s ease-in-out,
+                font-size .4s ease-in-out,
+                font-weight .4s ease-in-out,
+                color .4s ease-in-out,
+                letter-spacing .4s ease-in-out,
+                transform .4s ease-in-out,
+                background-color .4s ease-in-out;
+}
+
+.latest-events .subscribe input:not(:focus) + label,
+.latest-events .subscribe input:placeholder-shown + label {
+    top: 15px;
+    left: 30px;
+    color: #a2a2a2;
+    font-size: 22px;
+}
+
+.latest-events .subscribe input:focus + label,
+.latest-events .subscribe input:not(:placeholder-shown) + label {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    top: -10px;
+    left: 20px;
+    background-color: var(--main-color);
+}
+
+.latest-events .subscribe .subscribe-btn  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-color);
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    transition: top .4s ease-in-out,
+                left .4s ease-in-out,
+                border-radius .4s ease-in-out,
+                width .4s ease-in-out,
+                max-width .4s ease-in-out;
+}
+
+.latest-events .subscribe .subscribe-btn:hover {
+    background-color: #03a9f4;
+}
+
+/* latest events min-width: 800px ********************************************************************/
+@media (min-width: 800px) {
+    .latest-events .subscribe {        
+        padding: 20px 20px 20px;
+        border-radius: 30px;
+    }
+
+    .latest-events .subscribe input {
+        border-radius: 50px;
+    }
+
+    .latest-events .subscribe label {
+        border-radius: 30px;
+    }
+
+    .latest-events .subscribe .subscribe-btn  {
+        top: 0;
+        max-height: 100%;
+        border-radius: 50px;
+        width: 30%;
+        max-width: 250px;
+    }
+}
+
+/* latest events min-width: 1000px ********************************************************************/
+
+@media (min-width: 1000px) {
+    .latest-events::after,
+    .latest-events::before {
+        content: url(../imgs/dots.png);
+        position: absolute;
+        max-width: 100px;
+    }
+
+    .latest-events::after {
+        right: 50px;
+        top: 10%;
+    }
+
+    .latest-events::before {
+        left: -50px;
+        bottom: 10%;
+    }
+
+    .latest-events .main-content {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-top: 90px;
+    }
+    
+    .latest-events .main-content .image {
+        flex-basis: 50%;
+        display: block;
+    }
+
+    .latest-events .main-content .sub-content {
+        flex-basis: 60%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
     }
 }

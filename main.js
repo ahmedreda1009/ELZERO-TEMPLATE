@@ -133,7 +133,6 @@ arrowMain.addEventListener("click", () => {
 // scroll to top button //////////////////////////////////////////////////////////////////
 let scrollBtn = document.createElement("div");
 scrollBtn.classList.add("fa-solid", "fa-arrow-up-long", "scroll-to-top");
-scrollBtn.style.cssText = "border: 2px solid #FFF; display: none; box-shadow: rgb(138 138 138 / 25%) 0px 5px 10px 3px; z-index: 10000; font-size: 20px; border-radius: 10px; padding: 15px 20px; position: fixed; right: 25px; bottom: 25px; background-color: #2196f3; color: #FFF;";
 document.body.prepend(scrollBtn);
 
 // scroll to top button (on scroll)////////////////////////////////
@@ -174,8 +173,51 @@ window.addEventListener("scroll", () => {
 			if (element.textContent === element.dataset.prog) {
 			clearInterval(intId);
 			}
-		}, 18);
+		}, 20);
 		});
 	}
 	started = true;
 }})
+
+
+// event count down //////////////////////////////
+
+let days = document.querySelector(".latest-events .counter-unit:first-child .number");
+let hours = document.querySelector(".latest-events .counter-unit:nth-child(2) .number");
+let minutes = document.querySelector(".latest-events .counter-unit:nth-child(3) .number");
+let seconds = document.querySelector(".latest-events .counter-unit:last-child .number");
+
+let counter = setInterval(() => {
+  let timeNow = new Date();
+  let eventDate = new Date("1 1 2023");
+
+  let totalMilli = eventDate - timeNow;
+
+  let totalRemainingSec = Math.floor(totalMilli / 1000);
+  let totalRemainingMin = Math.floor(totalRemainingSec / 60);
+  let totalRemainingHours = Math.floor(totalRemainingMin / 60);
+  let totalRemainingDays = Math.floor(totalRemainingHours / 24);
+
+  let remHours = totalRemainingHours - (totalRemainingDays * 24);
+  let remMinutes = totalRemainingMin - (totalRemainingHours * 60);
+  let remSeconds = totalRemainingSec - (totalRemainingMin * 60);
+
+  days.textContent = totalRemainingDays;
+  hours.textContent = remHours;
+  minutes.textContent = remMinutes;
+  seconds.textContent = remSeconds;
+
+  if (hours.textContent < 10) {
+    hours.textContent = `0${remHours}`;
+  }
+  if (minutes.textContent < 10) {
+    minutes.textContent = `0${remMinutes}`;
+  }
+  if (seconds.textContent < 10) {
+    seconds.textContent = `0${remSeconds}`;
+  }
+}, 1000);
+
+if (timeNow === eventDate) {
+  clearInterval(counter);
+}

@@ -189,17 +189,21 @@ let seconds = document.querySelector(".latest-events .counter-unit:last-child .n
 
 let counter = setInterval(() => {
   let timeNow = new Date();
-  let eventDate = new Date("1 1 2023");
+  let eventDate = new Date("2022-09-07T19:00:00");
 
   let totalMilli = eventDate - timeNow;
 
+  // total remaining time in [seconds, minutes, hours, days]
   let totalRemainingSec = Math.floor(totalMilli / 1000);
   let totalRemainingMin = Math.floor(totalRemainingSec / 60);
   let totalRemainingHours = Math.floor(totalRemainingMin / 60);
   let totalRemainingDays = Math.floor(totalRemainingHours / 24);
 
+  // remaing hours after removing the days
   let remHours = totalRemainingHours - (totalRemainingDays * 24);
+  // remaing minutes after removing the hours
   let remMinutes = totalRemainingMin - (totalRemainingHours * 60);
+  // remaing seconds after removing the minutes
   let remSeconds = totalRemainingSec - (totalRemainingMin * 60);
 
   days.textContent = totalRemainingDays;
@@ -207,6 +211,9 @@ let counter = setInterval(() => {
   minutes.textContent = remMinutes;
   seconds.textContent = remSeconds;
 
+  if (days.textContent < 10) {
+    days.textContent = `0${totalRemainingDays}`;
+  }
   if (hours.textContent < 10) {
     hours.textContent = `0${remHours}`;
   }
@@ -216,8 +223,8 @@ let counter = setInterval(() => {
   if (seconds.textContent < 10) {
     seconds.textContent = `0${remSeconds}`;
   }
+  
+  if (timeNow === eventDate) {
+    clearInterval(counter);
+  }
 }, 1000);
-
-if (timeNow === eventDate) {
-  clearInterval(counter);
-}

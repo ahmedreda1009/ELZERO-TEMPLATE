@@ -1542,3 +1542,191 @@ main .arrow {
         text-align: center;
     }
 }
+
+/*------------------------------------------------------------------------------*/
+/*---------------------------------pricing plans mobile ------------------------*/
+/*------------------------------------------------------------------------------*/
+.pricing-plans {
+    position: relative;
+    background-color: var(--secondary-color);
+    z-index: 0;
+}
+
+.pricing-plans::before,
+.pricing-plans::after {
+    content: url(../imgs/dots.png);
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    z-index: -1;
+}
+
+.pricing-plans::before {
+    top: 181px;
+    right: 8px;
+}
+
+.pricing-plans::after {
+    bottom: 40px;
+    left: 4px;
+}
+
+.pricing-plans .card {
+    box-shadow: 2px 2px 15px 3px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background-color: #FFF;
+}
+
+.pricing-plans .card::before,
+.pricing-plans .card::after {
+    content: '';
+    width: 100%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.05);
+    position: absolute;
+    z-index: -1;
+    transition: left .4s ease-in-out,
+                right .4s ease-in-out;
+}
+
+.pricing-plans .card::before {
+    top: 0;
+    left: -100%;
+}
+
+.pricing-plans .card:hover::before {
+    left: 0;
+}
+
+.pricing-plans .card::after {
+    top: 50%;
+    right: -100%;
+}
+
+.pricing-plans .card:hover::after {
+    right: 0;
+}
+
+.pricing-plans .card .head {
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+}
+
+.pricing-plans .card .head h3 {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.pricing-plans .card .head .image {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.pricing-plans .card .head .number {
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.pricing-plans .card .head .per {
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+.pricing-plans .card .head .image img {
+    max-width: 40%;
+}
+
+.pricing-plans .card .features {
+    margin-top: 30px;
+}
+
+.pricing-plans .card .features li {
+    padding: 15px;
+    border-bottom: 1px solid var(--secondary-color);
+    color: var(--text-color);
+}
+
+.pricing-plans .card .features li:first-of-type {
+    border-top: 1px solid var(--secondary-color);
+}
+
+.pricing-plans .card .features li:before {
+    content: '\f058';
+    font-family: 'FontAwesome'; 
+    font-weight: 900;
+    font-size: 20px;
+    margin-right: 10px;
+    color: var(--main-color);
+}
+
+.pricing-plans .card .cta {
+    margin: auto;
+    width: fit-content;
+    padding: 40px 0;
+}
+
+.pricing-plans .card .cta button {
+    border: 3px solid var(--main-color);
+    background-color: #fff;
+    padding: .5em;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    color: var(--main-color);
+    transition: color .2s ease-in-out,
+                background-color .2s ease-in-out;
+}
+
+.pricing-plans .card .cta button:hover {
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+.most-popular {
+    position: absolute;
+    top: 0px;
+    right: 6%;
+    width: 40px;
+    height: 145px;
+    background-color: var(--main-color);
+    color: #FFF;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    writing-mode: vertical-lr;
+    padding: 20px 10px;
+}
+
+.most-popular::before,
+.most-popular::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 30px;
+    bottom: -24px;
+}
+
+.most-popular::before {
+    right: 0px;
+    border-color: transparent var(--main-color) transparent transparent;
+}
+
+.most-popular::after {
+    left: 0;
+    border-color: transparent transparent transparent var(--main-color);
+}
+
+/*------------------------------------------------------------------------------*/
+/*---------------------------------pricing plans desktop ------------------------*/
+/*------------------------------------------------------------------------------*/
+@media (min-width: 1073px) {
+    .most-popular-plan {
+        bottom: 20px;
+    }
+}

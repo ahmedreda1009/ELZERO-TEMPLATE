@@ -1,15 +1,27 @@
 // nav bar mobile toggle ////////////////////////////////////////////////////////////////////////////////
 const toggleNav = document.querySelector(".toggle-nav");
-let navOpen = false;
-toggleNav.addEventListener("click", () => {
-  if (!navOpen) {
-    toggleNav.classList.add("open");
-    navOpen = true;
+let secondMenu = document.querySelector(".mega-menu");
+
+document.addEventListener('click', (e) => {
+  let burgerBtn = e.target.classList.contains(".toggle-nav");
+  let burgerBtnIcons = e.target.closest(".toggle-nav");
+
+  if (e.target === secondMenu) {
+    secondMenu.classList.toggle("open");
+  }
+  if (!toggleNav.classList.contains("open")) {
+    secondMenu.classList.remove("open");
+  }
+
+  if (e.target.closest("nav")) return;
+
+  if (burgerBtn || burgerBtnIcons) {
+    toggleNav.classList.toggle("open");
   } else {
     toggleNav.classList.remove("open");
-    navOpen = false;
   }
-});
+  
+})
 
 // rating stars ////////////////////////////////////////////////////////////////////////////////////////
 let rating = document.querySelectorAll(".testimonials .rating");
@@ -223,7 +235,7 @@ let counter = setInterval(() => {
   if (seconds.textContent < 10) {
     seconds.textContent = `0${remSeconds}`;
   }
-  
+
   if (timeNow === eventDate) {
     clearInterval(counter);
   }

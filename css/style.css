@@ -304,11 +304,11 @@ nav .secondary-list {
 }
 
 /* open mega menu with hover  */
-.mega-menu:hover + .secondary-list,
+/* .mega-menu:hover + .secondary-list,
 .mega-menu + .secondary-list:hover {
     display: block;
     background-color: var(--dark-color);
-}
+} */
 
 nav .secondary-list .nav-item {
     padding: 1em 3.5em;

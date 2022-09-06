@@ -303,13 +303,6 @@ nav .secondary-list {
     background-color: var(--dark-color);
 }
 
-/* open mega menu with hover  */
-/* .mega-menu:hover + .secondary-list,
-.mega-menu + .secondary-list:hover {
-    display: block;
-    background-color: var(--dark-color);
-} */
-
 nav .secondary-list .nav-item {
     padding: 1em 3.5em;
     transition: background-color .2s;
@@ -400,6 +393,12 @@ nav .image {
         top: 100%;
         left: 0;
         width: 100%;
+    }
+    /* open mega menu with hover  */
+    .mega-menu:hover + .secondary-list,
+    .mega-menu + .secondary-list:hover {
+        display: block;
+        background-color: var(--dark-color);
     }
     
     /* open mega menu with click  */

@@ -1439,15 +1439,14 @@ main .arrow {
     top: 15px;
     left: 30px;
     color: #a2a2a2;
+    background-color: #FFF;
     font-size: 22px;
 }
 
 .latest-events .subscribe input:focus + label,
 .latest-events .subscribe input:not(:placeholder-shown) + label {
     color: #fff;
-    font-size: 18px;
     font-weight: bold;
-    letter-spacing: 1px;
     top: -10px;
     left: 20px;
     background-color: var(--main-color);

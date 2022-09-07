@@ -1583,7 +1583,7 @@ main .arrow {
     content: '';
     width: 100%;
     height: 50%;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.03);
     position: absolute;
     z-index: -1;
     transition: left .4s ease-in-out,
@@ -1727,4 +1727,269 @@ main .arrow {
     .most-popular-plan {
         bottom: 20px;
     }
+}
+
+/*------------------------------------------------------------------------------*/
+/*-------------------------------- top videos mobile ---------------------------*/
+/*------------------------------------------------------------------------------*/
+.top-videos .video-titles .head {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 10px;
+    border: 1px solid rgb(232, 232, 232);
+    background-color: var(--secondary-color);
+}
+
+.top-videos .video-titles .head h3 {
+    font-size: 20px;
+    text-transform: uppercase;
+    padding-right: 10px;
+}
+
+.top-videos .video-titles i {
+    color: rgb(158, 158, 158);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.top-videos .video-titles i:hover {
+    color: #000;
+}
+
+.top-videos .video-titles i.fa-chevron-down {
+    margin-right: auto;
+    transition: transform .5s ease-in-out;
+    transform: rotate(180deg);
+}
+
+.top-videos .video-titles i.fa-chevron-down.close {
+    transform: rotate(0deg);
+}
+
+.top-videos .video-titles i.fa-random {
+    margin-left: auto;
+}
+
+.top-videos .video-titles ul {
+    border: 1px solid #eee;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: none;
+    height: 530px;
+    transition: height .5s ease-in-out;
+}
+
+.top-videos .video-titles ul li {
+    border-bottom: 1px solid #eee;
+    transition: transform .5s ease-in-out;
+    background-color: #fff;
+}
+
+.top-videos .video-titles ul li  h4 {
+    color: var(--text-color);
+    tab-size: 18px;
+    padding: 20px 10px 10px;
+    margin: 0;
+}
+
+.top-videos .video-titles ul li.active h4 {
+    color: var(--main-color);
+}
+
+.top-videos .video-titles ul li  time {
+    color: var(--text-color);
+    font-size: 14px;
+    display: block;
+    padding: 0 10px 10px;
+}
+
+.top-videos .video-titles ul li:hover h4 {
+    color: black;
+}
+
+.top-videos .video-titles ul li.active:hover h4 {
+    color: var(--main-color);
+}
+
+.top-videos .video-window {
+    background-color: #cbcbcb;
+    padding: 10px;
+}
+
+.top-videos .video-window .video-title {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* when click the arrow */
+.top-videos .video-titles ul.close {
+    height: 0px;
+}
+
+.top-videos .video-titles ul.close li {
+    transition: transform .5s ease-in-out;
+}
+
+.top-videos .video-titles ul.close li:first-child {
+    transform: translatey(-76px);
+}
+
+.top-videos .video-titles ul.close li:nth-child(2) {
+    transform: translatey(calc(-76px * 2));
+}
+
+.top-videos .video-titles ul.close li:nth-child(3) {
+    transform: translatey(calc(-76px * 3));
+}
+
+.top-videos .video-titles ul.close li:nth-child(4) {
+    transform: translatey(calc(-76px * 4));
+}
+
+.top-videos .video-titles ul.close li:nth-child(5) {
+    transform: translatey(calc(-76px * 5));
+}
+
+.top-videos .video-titles ul.close li:nth-child(6) {
+    transform: translatey(calc(-76px * 6));
+}
+
+.top-videos .video-titles ul.close li:last-child {
+    transform: translatey(calc(-76px * 7));
+}
+
+/*------------------------------------------------------------------------------*/
+/*-------------------------------- top videos desktop ---------------------------*/
+/*------------------------------------------------------------------------------*/
+@media (min-width: 1000px) {
+    .top-videos .container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .top-videos .video-titles {
+        min-width: 300px;
+    }
+    
+    .top-videos .video-window {
+        flex-grow: 1;
+        width: 772px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .top-videos .video-window .image {
+        margin: 0 auto;
+    }
+    
+    /* .top-videos .video-window .image img {
+        max-width: 100%;
+    } */
+
+    .top-videos .video-window .video-title {
+        order: -1;
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+}
+
+/*------------------------------------------------------------------------------*/
+/*-------------------------------- Our Awesome Stats mobile ---------------------------*/
+/*------------------------------------------------------------------------------*/
+.our-awesome-stats {
+    background-image: url(../imgs/stats.jpg);
+    position: relative;
+}
+
+.our-awesome-stats::before {
+    content: '';
+    background-color: rgba(255, 255, 255, 0.93);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.our-awesome-stats .header {
+    width: fit-content;
+    margin: 80px auto;
+    margin-top: 30px;
+    padding: .7em 1.3em;
+    position: relative;
+}
+
+.our-awesome-stats .header h2 {
+    margin: 0;
+    font-size: 2.15em;
+    text-transform: uppercase;
+    word-spacing: 6px;
+}
+
+.our-awesome-stats .container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.our-awesome-stats .card {
+    background-color: #fff;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.02);
+    padding: 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.our-awesome-stats .card::before,
+.our-awesome-stats .card::after {
+    content: '';
+    width: 2px;
+    height: 100%;
+    background-color: var(--main-color);
+    position: absolute;
+    transition: top .7s ease-out,
+                bottom .7s ease-out;
+}
+
+.our-awesome-stats .card::before {
+    left: 0;
+    top: -100%;
+}
+
+.our-awesome-stats .card:hover::before {
+    top: 0;
+}
+
+.our-awesome-stats .card::after {
+    right: 0;
+    bottom: -100%;
+}
+
+.our-awesome-stats .card:hover::after {
+    bottom: 0;
+}
+
+.our-awesome-stats .card .icon {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.our-awesome-stats .card .number {
+    margin: 10px 0px;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.our-awesome-stats .card .title {
+    font-size: 25px;
+    color: var(--main-color);
+    font-weight: bold;
 }

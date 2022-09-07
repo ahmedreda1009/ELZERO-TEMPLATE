@@ -240,3 +240,92 @@ let counter = setInterval(() => {
     clearInterval(counter);
   }
 }, 1000);
+
+/*------------------------------------------------------------------------------*/
+/*-------------------------------- top videos close and open ---------------------------*/
+/*------------------------------------------------------------------------------*/
+let videoArrow = document.querySelector(".top-videos .video-titles i.fa-chevron-down");
+let videoTitles = document.querySelector(".top-videos .video-titles ul");
+
+videoArrow.addEventListener('click', () => {
+  videoArrow.classList.toggle("close");
+  videoTitles.classList.toggle("close");
+})
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.innerWidth <= 1000) {
+    videoArrow.classList.add("close");
+    videoTitles.classList.add("close");
+  }
+})
+
+window.onresize = function() {
+  if (window.innerWidth <= 1000) {
+    videoArrow.classList.add("close");
+    videoTitles.classList.add("close");
+  } else {
+    videoArrow.classList.remove("close");
+    videoTitles.classList.remove("close");
+  }
+}
+
+/*------------------------------------------------------------------------------*/
+/*-------------------------------- top videos choose video ---------------------------*/
+/*------------------------------------------------------------------------------*/
+let videoWindow = document.querySelector(".top-videos .video-window img");
+let videoTitle = document.querySelectorAll(".top-videos .video-titles ul li");
+let shuffleBtn = document.querySelector(".top-videos .video-titles i.fa-random");
+let videoPlayTitle = document.querySelector(".top-videos .video-window .video-title");
+
+videoTitle.forEach(ele => {
+  ele.addEventListener('click', () => {
+    videoWindow.src = ele.dataset.link;
+
+    videoTitle.forEach(e => {
+      e.classList.remove("active");
+    })
+    ele.classList.add("active");
+
+    videoPlayTitle.textContent = ele.firstElementChild.textContent;
+  })
+});
+
+let lastRandom;
+
+shuffleBtn.addEventListener('click', () => {
+  let random = Math.floor(Math.random() * 7);
+  if (random === lastRandom) {
+    random++;
+  }
+  lastRandom = random;
+  videoWindow.src = videoTitle[random].dataset.link;
+
+  videoTitle.forEach(e => {
+    e.classList.remove("active");
+  })
+  videoTitle[random].classList.add("active");
+
+  videoPlayTitle.textContent = videoTitle[random].firstElementChild.textContent;
+})
+
+/*------------------------------------------------------------------------------*/
+/*-------------------------------- Our Awesome Stats number increasing ---------------------------*/
+/*------------------------------------------------------------------------------*/
+let awesomeSection = document.querySelector(".our-awesome-stats");
+let awesomeNumber = document.querySelectorAll(".our-awesome-stats .card .number");
+
+setInterval(() => {
+  
+}, 1000);
+
+window.addEventListener('scroll', () => {
+if (window.scrollY >= awesomeSection.offsetTop - 150) {
+    awesomeNumber.forEach(element => {
+      setInterval(() => {
+        if (+element.textContent < +element.dataset.number) {
+          +element.textContent++;
+        }
+      }, 30);
+    });
+  }
+})

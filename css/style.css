@@ -2078,6 +2078,11 @@ section.discount .request form > * {
     caret-color: var(--text-color);
 }
 
+section.discount .request form input,
+section.discount .request form textarea {
+    background-color: rgba(238, 238, 238, 0.4);
+}
+
 section.discount .request form textarea {
     resize: vertical;
 }
@@ -2216,6 +2221,8 @@ footer .contact > * {
 footer .contact i {
     font-size: 25px;
     color: var(--main-color);
+    display: block;
+    min-width: 30px;
 }
 
 footer .contact address {

@@ -201,9 +201,14 @@ let seconds = document.querySelector(".latest-events .counter-unit:last-child .n
 
 let counter = setInterval(() => {
   let timeNow = new Date();
-  let eventDate = new Date("2022-09-07T19:00:00");
+  let eventDate = new Date("2023-01-01T00:00:00");
 
   let totalMilli = eventDate - timeNow;
+
+  if (totalMilli <= 0) {
+    clearInterval(counter);
+    return;
+  }
 
   // total remaining time in [seconds, minutes, hours, days]
   let totalRemainingSec = Math.floor(totalMilli / 1000);
@@ -234,10 +239,6 @@ let counter = setInterval(() => {
   }
   if (seconds.textContent < 10) {
     seconds.textContent = `0${remSeconds}`;
-  }
-
-  if (timeNow === eventDate) {
-    clearInterval(counter);
   }
 }, 1000);
 
@@ -306,7 +307,7 @@ shuffleBtn.addEventListener('click', () => {
   videoTitle[random].classList.add("active");
 
   videoPlayTitle.textContent = videoTitle[random].firstElementChild.textContent;
-})
+});
 
 /*------------------------------------------------------------------------------*/
 /*-------------------------------- Our Awesome Stats number increasing ---------------------------*/
@@ -314,18 +315,22 @@ shuffleBtn.addEventListener('click', () => {
 let awesomeSection = document.querySelector(".our-awesome-stats");
 let awesomeNumber = document.querySelectorAll(".our-awesome-stats .card .number");
 
-setInterval(() => {
-  
-}, 1000);
-
 window.addEventListener('scroll', () => {
-if (window.scrollY >= awesomeSection.offsetTop - 150) {
+if (window.scrollY >= awesomeSection.offsetTop - 200) {
     awesomeNumber.forEach(element => {
       setInterval(() => {
-        if (+element.textContent < +element.dataset.number) {
-          +element.textContent++;
+        if (element.textContent < +element.dataset.number) {
+          element.textContent++;
         }
-      }, 30);
+      }, 20);
     });
   }
 })
+
+/*------------------------------------------------------------------------------*/
+/*-------------------------------- Our Awesome Stats number increasing ---------------------------*/
+/*------------------------------------------------------------------------------*/
+let footerDate = document.querySelector(".copy-rights span");
+let thisYear = new Date();
+
+footerDate.textContent = thisYear.getFullYear();
